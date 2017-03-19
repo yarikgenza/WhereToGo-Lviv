@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, Image, View, TouchableOpacity } from 'react-native';
+import {Actions} from 'react-native-router-flux'
 import * as Animatable from 'react-native-animatable';
 
 import NativeFeedbackButton from '../Components/NativeFeedbackButton';
@@ -9,21 +10,14 @@ import styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      fontSize: 12
-    }
-  }
-
   handleNextButtonPress() {
-    alert('good')
+    Actions.locationScreen();
   }
 
   render () {
     return (
       <View style={styles.container}>
-        <Animatable.View animation="pulse" iterationCount={"infinite"} useNativeDriver style={styles.logoBlock}>
+        <Animatable.View animation="pulse" iterationCount="infinite" useNativeDriver style={styles.logoBlock}>
           <Image
             style={styles.logo}
             source={Images.logo}
