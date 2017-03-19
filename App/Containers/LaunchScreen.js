@@ -1,32 +1,54 @@
 import React, { Component } from 'react';
-import { Text, Image, View } from 'react-native';
+import { Text, Image, View, TouchableOpacity } from 'react-native';
+import * as Animatable from 'react-native-animatable';
+
 import NativeFeedbackButton from '../Components/NativeFeedbackButton';
 import { Images } from '../Themes';
-
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      fontSize: 12
+    }
+  }
+
   handleNextButtonPress() {
-    alert('hello)')
+    alert('good')
   }
 
   render () {
     return (
       <View style={styles.container}>
-        <View style={styles.logoBlock}>
+        <Animatable.View animation="pulse" iterationCount={"infinite"} useNativeDriver style={styles.logoBlock}>
           <Image
             style={styles.logo}
             source={Images.logo}
           />
-        </View>
+        </Animatable.View>
         <View style={styles.headingContainer}>
-          <Text style={styles.heading}>Where to go?</Text>
-          <Text style={styles.headingName}>Lviv</Text>
+          <Animatable.Text
+            style={styles.heading}
+            delay={100}
+            animation="bounceInUp"
+            useNativeDriver
+            iterationCount={1}>
+              Where to go?
+          </Animatable.Text>
+          <Animatable.Text style={styles.headingName}
+            delay={500}
+            animation="bounceInDown"
+            useNativeDriver
+            iterationCount={1}
+            direction="alternate">
+              Lviv
+          </Animatable.Text>
         </View>
         <NativeFeedbackButton
-          onPress={() => this.handleNextButtonPress}
+          onPress={() => this.handleNextButtonPress()}
           title='start exploring now'
           styles={styles.nextButton}
           textStyles={styles.buttonText} />
