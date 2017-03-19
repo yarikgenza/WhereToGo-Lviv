@@ -7,10 +7,6 @@ import NavigationDrawer from './NavigationDrawer'
 import LaunchScreen from '../Containers/LaunchScreen';
 import LocationScreen from '../Containers/LocationScreen';
 
-/* **************************
-* Documentation: https://github.com/aksonov/react-native-router-flux
-***************************/
-
 class NavigationRouter extends Component {
   render () {
     return (
