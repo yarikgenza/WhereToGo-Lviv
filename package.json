@@ -78,6 +78,13 @@
     ],
     "babel": "inherit"
   },
+  "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true
+      }
+  },
   "standard": {
     "parser": "babel-eslint",
     "globals": [
