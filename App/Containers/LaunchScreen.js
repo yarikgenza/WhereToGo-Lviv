@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Text, Image, View, TouchableOpacity } from 'react-native';
+import { Image, View } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import * as Animatable from 'react-native-animatable';
 
 import NativeFeedbackButton from '../Components/NativeFeedbackButton';
 import { Images } from '../Themes';
-// Styles
+
 import styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends Component {
@@ -43,7 +43,7 @@ export default class LaunchScreen extends Component {
         </View>
         <NativeFeedbackButton
           onPress={() => this.handleNextButtonPress()}
-          title='start exploring now'
+          title='start exploring'
           styles={styles.nextButton}
           textStyles={styles.buttonText} />
       </View>
