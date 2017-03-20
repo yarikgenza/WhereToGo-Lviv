@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { ApplicationStyles } from '../../Themes/'
+import { ApplicationStyles, Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -8,11 +8,11 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#2b323b'
+    backgroundColor: Colors.background
   },
   headingContainer: {
     flex: 0.45,
-    backgroundColor: '#2b323b',
+    backgroundColor: Colors.background,
     alignItems: 'center'
   },
   heading: {
@@ -21,7 +21,7 @@ export default StyleSheet.create({
     fontFamily: 'Roboto'
   },
   headingName: {
-    color: '#fac308',
+    color: Colors.yellowText,
     paddingTop: 50,
     fontSize: 52,
     fontFamily: 'Roboto'
@@ -34,16 +34,16 @@ export default StyleSheet.create({
   logo: {
     width: 175,
     height: 150,
-    backgroundColor: '#2b323b'
+    backgroundColor: Colors.background
   },
   nextButton: {
     padding: 15,
-    backgroundColor: '#fac308',
+    backgroundColor: Colors.yellowText,
     alignItems: 'center',
     justifyContent: 'center'
   },
   buttonText: {
-    color: '#2b323b',
+    color: Colors.background,
     fontSize: 17
   }
 })

@@ -1,25 +1,68 @@
-import React, { Component } from 'react'
-import { Text, Image, View } from 'react-native'
-import { Images } from '../Themes'
+import React, { Component } from 'react';
+import { View, Text, ActivityIndicator } from 'react-native';
+import LocationActions from '../Redux/LocationRedux'
+import { connect } from 'react-redux'
 
-// Styles
-import styles from './Styles/LaunchScreenStyles'
+import NativeFeedbackButton from '../Components/NativeFeedbackButton';
 
-export default class LocationScreen extends Component {
+import styles from './Styles/LocationScreenStyles'
 
-  render () {
+class LocationScreen extends Component {
+
+  componentDidMount() {
+    this.getLocation();
+  }
+
+  getLocation() {
+    navigator.geolocation.getCurrentPosition(
+       (position) => {
+         const { longitude, latitude } = position.coords;
+         this.props.setLocation(latitude, longitude);
+       },
+       (error) => this.handleLocationErr(error),
+       {enableHighAccuracy: true, timeout: 45000, maximumAge: 1000}
+     )
+  }
+
+  getFormattedLocation() {
+    const {lat, lon} = this.state;
+
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${config.apiKey}`)
+      .then(res => res.json())
+        .then((res) => {
+          this.setState({
+            formattedLocation: res.results[0].formatted_address,
+            locationReady: true
+          })
+        })
+      .catch(err => this.handleLocationError('No Internet'))
+  }
+
+  render() {
+    const { state } = this.props;
     return (
       <View style={styles.container}>
-        <View style={styles.logoBlock}>
-          <Image
-            style={styles.logo}
-            source={Images.logo}
-          />
-        </View>
         <View style={styles.headingContainer}>
-          <Text style={styles.heading}>Here we wil get your location</Text>
+          <Text style={styles.headingText}>{state.isLocationReady ? 'Done!' : 'Waiting your location'}</Text>
+          <Text style={styles.headingTextMarked}>location...{state.lat} and {state.lon}</Text>
         </View>
       </View>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    state: state.location
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLocation: (lat, lon) => dispatch(LocationActions.locationSet(lat, lon)),
+    setFormatted: (location) => dispatch(LocationActions.locationFormattedSet(location)),
+    locationError: (message) => dispatch(LocationActions.locationError(message))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationScreen)
