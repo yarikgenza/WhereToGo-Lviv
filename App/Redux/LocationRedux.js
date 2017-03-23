@@ -24,7 +24,6 @@ export const INITIAL_STATE = Immutable({
 export const set = (state, action) => {
   const { lat, lon } = action;
   return state.merge({
-    isLocationReady: true,
     lat: lat,
     lon: lon
   })
@@ -34,7 +33,6 @@ export const setFormatted = (state, action) => {
   const { location } = action;
   return state.merge({
     formatted: location,
-    isLocationReady: true
   })
 }
 

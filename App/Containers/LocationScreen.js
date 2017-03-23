@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ActivityIndicator, TouchableNativeFeedback } from 'react-native';
 import LocationActions from '../Redux/LocationRedux'
 import { connect } from 'react-redux'
+import { mapsApiKey } from 'react-native-config';
 
 import NativeFeedbackButton from '../Components/NativeFeedbackButton';
 import styles from './Styles/LocationScreenStyles'
@@ -28,6 +29,7 @@ class LocationScreen extends Component {
            isLocationReady: true
          })
          this.props.setLocation(latitude, longitude);
+         this.getFormattedLocation(latitude, longitude);
        },
        (error) => this.handleLocationError(error),
        {enableHighAccuracy: true, timeout: 45000, maximumAge: 1000}
@@ -50,40 +52,23 @@ class LocationScreen extends Component {
     }
   }
 
-  /*getFormattedLocation() {
-    const {lat, lon} = this.state;
+  getFormattedLocation(lat, lon) {
+    const {setFormatted} = this.props.state;
 
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${config.apiKey}`)
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${mapsApiKey}`)
       .then(res => res.json())
         .then((res) => {
+          setFormatted(res.results[0].formatted_address);
           this.setState({
-            formattedLocation: res.results[0].formatted_address,
             locationReady: true
           })
         })
       .catch(err => this.handleLocationError('No Internet'))
-  }*/
+  }
 
   render() {
     const { state: { lat, lon, formatted } } = this.props;
     const { isLocationReady, error } = this.state;
-
-    /*return (
-      <View style={styles.container}>
-        <View style={styles.headingContainer}>
-          <Text style={styles.headingText}>{isLocationReady ? 'Done!' : 'Waiting your'}</Text>
-          <Text style={styles.headingTextMarked}>{isLocationReady ? "" : 'location...'}</Text>
-          { isLocationReady ? '' : (
-            <View style={styles.spinnerContainer}>
-              <ActivityIndicator size={75} />
-            </View>
-          )}
-          <View style={styles.infoButton}>
-            <Text style={styles.buttonText}>JUST A MOMENT...</Text>
-         </View>
-        </View>
-      </View>
-    )*/
 
     return(
       <View style={styles.container}>
