@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import { ApplicationStyles, Colors } from '../../Themes/'
 
 export default StyleSheet.create({
-  ...ApplicationStyles.screen,
+  //...ApplicationStyles.screen,
   container: {
     flex: 1, // to delete
     backgroundColor: Colors.background
@@ -20,7 +20,7 @@ export default StyleSheet.create({
     justifyContent: "center"
   },
   spinnerContainer: {
-    flex: 0.4,
+    flex: 1,
     backgroundColor: Colors.background
   },
   errTextContainer: {

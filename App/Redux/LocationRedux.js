@@ -6,7 +6,6 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   locationSet: ['lat', 'lon'],
   locationFormattedSet: 'location',
-  locationError: ['message']
 })
 
 export const LocationTypes = Types
@@ -15,11 +14,9 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  isLocationReady: false,
   lat: null,
   lon: null,
   formatted: null,
-  error: null
 })
 
 /* ------------- Reducers ------------- */
@@ -41,18 +38,9 @@ export const setFormatted = (state, action) => {
   })
 }
 
-export const locationError = (state, action) => {
-  const { message } = action;
-  return state.merge({
-    error: message
-  })
-}
-
-
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOCATION_SET]: set,
-  [Types.LOCATION_FORMATTED_SET]: setFormatted,
-  [Types.LOCATION_ERROR]: locationError
+  [Types.LOCATION_FORMATTED_SET]: setFormatted
 })
