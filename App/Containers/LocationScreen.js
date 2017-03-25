@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, TouchableNativeFeedback } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import LocationActions from '../Redux/LocationRedux'
 import { connect } from 'react-redux'
-import { mapsApiKey } from 'react-native-config';
+import apiConfig from '../Config/api';
+const { locationConfig } = apiConfig;
 
 import NativeFeedbackButton from '../Components/NativeFeedbackButton';
 import styles from './Styles/LocationScreenStyles'
@@ -21,13 +22,18 @@ class LocationScreen extends Component {
     this.getLocation();
   }
 
+  handleTryAgainButton() {
+    this.setState({
+      locationReady: false,
+      error: ''
+    })
+    this.getLocation();
+  }
+
   getLocation() {
     navigator.geolocation.getCurrentPosition(
        (position) => {
          const { longitude, latitude } = position.coords;
-         this.setState({
-           isLocationReady: true
-         })
          this.props.setLocation(latitude, longitude);
          this.getFormattedLocation(latitude, longitude);
        },
@@ -54,8 +60,9 @@ class LocationScreen extends Component {
 
   getFormattedLocation(lat, lon) {
     const {setFormatted} = this.props.state;
+    const { locationConfig: { baseUrl, apiKey }} = apiConfig;
 
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${mapsApiKey}`)
+    fetch(`${baseUrl}?latlng=${lat},${lon}&key=${apiKey}`)
       .then(res => res.json())
         .then((res) => {
           setFormatted(res.results[0].formatted_address);
@@ -75,7 +82,7 @@ class LocationScreen extends Component {
       { isLocationReady ? (
         <View style={styles.headingContainer}>
           <Text style={styles.headingText}>Done!</Text>
-          <Text style={styles.formattedLocation}>{this.state.formatted}</Text>
+          <Text style={styles.formattedLocation}>{ formatted }</Text>
         </View>
       ) : (
         <View style={styles.headingContainer}>
@@ -94,16 +101,22 @@ class LocationScreen extends Component {
           </View>
         )}
         { isLocationReady ? (
-          <TouchableNativeFeedback
-            background={TouchableNativeFeedback.SelectableBackground()} >
-            <View style={styles.infoButton}>
-              <Text style={styles.buttonText}>SEARCH PLACES NEAR YOU</Text>
-            </View>
-         </TouchableNativeFeedback>
-        ) : (
+          <NativeFeedbackButton
+            styles={styles.infoButton}
+            textStyles={styles.buttonText}
+            title={'Search places near you'}
+          />
+        ) : (error === '' ? (
           <View style={styles.infoButton}>
-            <Text style={styles.buttonText}>{ error === '' ? 'JUST A MOMENT...' : 'try again'}</Text>
-         </View>
+            <Text style={styles.buttonText}>JUST A MOMENT...</Text>
+         </View>) : (
+           <NativeFeedbackButton
+             styles={styles.infoButton}
+             textStyles={styles.buttonText}
+             title={'TRY AGAIN'}
+             onPress={() => this.handleTryAgainButton()}
+           />
+         )
         )
         }
       </View>
