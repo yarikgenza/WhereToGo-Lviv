@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
-import LocationActions from '../Redux/LocationRedux'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import LocationActions from '../Redux/LocationRedux';
 import apiConfig from '../Config/api';
-const { locationConfig } = apiConfig;
 
 import NativeFeedbackButton from '../Components/NativeFeedbackButton';
-import styles from './Styles/LocationScreenStyles'
+import styles from './Styles/LocationScreenStyles';
 
 class LocationScreen extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      locationReady: false,
-      error: ''
+      isLocationReady: false,
+      error: '',
+      formatted: ''
     }
   }
 
@@ -24,7 +24,7 @@ class LocationScreen extends Component {
 
   handleTryAgainButton() {
     this.setState({
-      locationReady: false,
+      isLocationReady: false,
       error: ''
     })
     this.getLocation();
@@ -59,23 +59,22 @@ class LocationScreen extends Component {
   }
 
   getFormattedLocation(lat, lon) {
-    const {setFormatted} = this.props.state;
-    const { locationConfig: { baseUrl, apiKey }} = apiConfig;
+    const { geocodingConfig: { baseUrl, apiKey }} = apiConfig;
 
     fetch(`${baseUrl}?latlng=${lat},${lon}&key=${apiKey}`)
-      .then(res => res.json())
-        .then((res) => {
-          setFormatted(res.results[0].formatted_address);
-          this.setState({
-            locationReady: true
-          })
+    .then(res => res.json())
+      .then((res) => {
+        this.setState({
+          formatted: res.results[0].formatted_address,
+          isLocationReady: true
         })
+      })
       .catch(err => this.handleLocationError('No Internet'))
   }
 
   render() {
-    const { state: { lat, lon, formatted } } = this.props;
-    const { isLocationReady, error } = this.state;
+    const { state: { lat, lon} } = this.props;
+    const { formatted , isLocationReady, error } = this.state;
 
     return(
       <View style={styles.container}>
@@ -133,8 +132,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setLocation: (lat, lon) => dispatch(LocationActions.locationSet(lat, lon)),
-    setFormatted: (location) => dispatch(LocationActions.locationFormattedSet(location)),
+    setLocation: (lat, lon) => dispatch(LocationActions.locationSet(lat, lon))
   }
 }
 

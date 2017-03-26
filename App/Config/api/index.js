@@ -1,9 +1,9 @@
 import maps from './maps.config.js';
-import location from './location.config.js';
+import geocoding from './geocoding.config.js';
 
 const apiConfig = {
   mapsConfig: maps,
-  locationConfig: location
+  geocodingConfig: geocoding
 }
 
 export default apiConfig;
