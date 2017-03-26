@@ -43,32 +43,32 @@ Currently, WhereToGo is in active development and was created as pet-project.
 
 **Sidebar**
 
-- [] Login/register (not mandatory)
-- [] Places
-- [] Events
-- [] History
-- [] Help
-- [] Setting (not mandatory)
+- [ ] Login/register (not mandatory)
+- [ ] Places
+- [ ] Events
+- [ ] History
+- [ ] Help
+- [ ] Setting (not mandatory)
 
 **Places**
 
-- [] Food and Drink
-- [] Architecture
-- [] Entertainment
-- [] List view
-- [] Dynamical places loading
-- [] Show required time to get to the place
+- [ ] Food and Drink
+- [ ] Architecture
+- [ ] Entertainment
+- [ ] List view
+- [ ] Dynamical places loading
+- [ ] Show required time to get to the place
 
 **Events**
 
-- [] Split into categories (art, music, IT, etc.)
-- [] [back-end] Endpoint to add events
-- [] Page of event with info
+- [ ] Split into categories (art, music, IT, etc.)
+- [ ] [back-end] Endpoint to add events
+- [ ] Page of event with info
 
 **Social integration**
 
-- [] Share posts like "check-in" using Fb
-- [] Auth using fb
+- [ ] Share posts like "check-in" using Fb
+- [ ] Auth using fb
 
 
 Project under MIT license.
