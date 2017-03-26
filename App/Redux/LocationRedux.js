@@ -1,5 +1,5 @@
 import { createReducer, createActions } from 'reduxsauce'
-import { locationService } from '../Services';
+import { locationService } from '../Services'
 import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
@@ -20,7 +20,7 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Reducers ------------- */
 
 export const set = (state, action) => {
-  const { lat, lon } = action;
+  const { lat, lon } = action
   return state.merge({
     lat: lat,
     lon: lon

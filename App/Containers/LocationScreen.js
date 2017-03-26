@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
-import { connect } from 'react-redux';
-import LocationActions from '../Redux/LocationRedux';
-import apiConfig from '../Config/api';
+import React, { Component } from 'react'
+import { View, Text, ActivityIndicator } from 'react-native'
+import { connect } from 'react-redux'
+import LocationActions from '../Redux/LocationRedux'
+import apiConfig from '../Config/api'
 
-import NativeFeedbackButton from '../Components/NativeFeedbackButton';
-import styles from './Styles/LocationScreenStyles';
+import NativeFeedbackButton from '../Components/NativeFeedbackButton'
+import styles from './Styles/LocationScreenStyles'
 
 class LocationScreen extends Component {
 
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = {
       isLocationReady: false,
       error: '',
@@ -18,48 +18,48 @@ class LocationScreen extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getLocation();
+  componentDidMount () {
+    this.getLocation()
   }
 
-  handleTryAgainButton() {
+  handleTryAgainButton () {
     this.setState({
       isLocationReady: false,
       error: ''
     })
-    this.getLocation();
+    this.getLocation()
   }
 
-  getLocation() {
+  getLocation () {
     navigator.geolocation.getCurrentPosition(
        (position) => {
-         const { longitude, latitude } = position.coords;
-         this.props.setLocation(latitude, longitude);
-         this.getFormattedLocation(latitude, longitude);
+         const { longitude, latitude } = position.coords
+         this.props.setLocation(latitude, longitude)
+         this.getFormattedLocation(latitude, longitude)
        },
        (error) => this.handleLocationError(error),
        {enableHighAccuracy: true, timeout: 45000, maximumAge: 1000}
      )
   }
 
-  handleLocationError(error) {
-    if (error === "No available location provider.") {
+  handleLocationError (error) {
+    if (error === 'No available location provider.') {
       this.setState({
-        error: "Please, turn-on GPS"
+        error: 'Please, turn-on GPS'
       })
-    } else if (error === "Location request timed out"){
+    } else if (error === 'Location request timed out') {
       this.setState({
-        error: "Please, try go outside and try again"
+        error: 'Please, try go outside and try again'
       })
-    } else if (error === "No Internet"){
+    } else if (error === 'No Internet') {
       this.setState({
-        error: "No internet connection"
+        error: 'No internet connection'
       })
     }
   }
 
-  getFormattedLocation(lat, lon) {
-    const { geocodingConfig: { baseUrl, apiKey }} = apiConfig;
+  getFormattedLocation (lat, lon) {
+    const { geocodingConfig: { baseUrl, apiKey }} = apiConfig
 
     fetch(`${baseUrl}?latlng=${lat},${lon}&key=${apiKey}`)
     .then(res => res.json())
@@ -72,17 +72,17 @@ class LocationScreen extends Component {
       .catch(err => this.handleLocationError('No Internet'))
   }
 
-  render() {
-    const { state: { lat, lon} } = this.props;
-    const { formatted , isLocationReady, error } = this.state;
+  render () {
+    const { state: { lat, lon} } = this.props
+    const { formatted, isLocationReady, error } = this.state
 
-    return(
+    return (
       <View style={styles.container}>
-      { isLocationReady ? (
-        <View style={styles.headingContainer}>
-          <Text style={styles.headingText}>Done!</Text>
-          <Text style={styles.formattedLocation}>{ formatted }</Text>
-        </View>
+        { isLocationReady ? (
+          <View style={styles.headingContainer}>
+            <Text style={styles.headingText}>Done!</Text>
+            <Text style={styles.formattedLocation}>{ formatted }</Text>
+          </View>
       ) : (
         <View style={styles.headingContainer}>
           <Text style={styles.headingText}>{error === '' ? 'Waiting your' : "Can't get your"}</Text>
@@ -108,19 +108,18 @@ class LocationScreen extends Component {
         ) : (error === '' ? (
           <View style={styles.infoButton}>
             <Text style={styles.buttonText}>JUST A MOMENT...</Text>
-         </View>) : (
-           <NativeFeedbackButton
-             styles={styles.infoButton}
-             textStyles={styles.buttonText}
-             title={'TRY AGAIN'}
-             onPress={() => this.handleTryAgainButton()}
+          </View>) : (
+            <NativeFeedbackButton
+              styles={styles.infoButton}
+              textStyles={styles.buttonText}
+              title={'TRY AGAIN'}
+              onPress={() => this.handleTryAgainButton()}
            />
          )
         )
         }
       </View>
     )
-
   }
 }
 

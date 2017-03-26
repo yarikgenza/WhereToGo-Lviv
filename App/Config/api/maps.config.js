@@ -1,4 +1,4 @@
 const maps = {
   apiKey: '',
-  baseUrl: 'https://api.google.maps/',
+  baseUrl: 'https://api.google.maps/'
 }

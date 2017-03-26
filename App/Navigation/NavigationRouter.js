@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Scene, Router } from 'react-native-router-flux'
 import Styles from './Styles/NavigationContainerStyles'
 import NavigationDrawer from './NavigationDrawer'
 
 // screens identified by the router
-import LaunchScreen from '../Containers/LaunchScreen';
-import LocationScreen from '../Containers/LocationScreen';
+import LaunchScreen from '../Containers/LaunchScreen'
+import LocationScreen from '../Containers/LocationScreen'
 
 class NavigationRouter extends Component {
   render () {
@@ -13,8 +13,8 @@ class NavigationRouter extends Component {
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-            <Scene initial key='launchScreen' component={LaunchScreen} hideNavBar/>
-            <Scene key='locationScreen' component={LocationScreen} hideNavBar/>
+            <Scene initial key='launchScreen' component={LaunchScreen} hideNavBar />
+            <Scene key='locationScreen' component={LocationScreen} hideNavBar />
           </Scene>
         </Scene>
       </Router>

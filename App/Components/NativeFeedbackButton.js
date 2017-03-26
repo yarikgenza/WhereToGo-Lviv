@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import { TouchableNativeFeedback, Text, View } from 'react-native';
+import React, { Component, PropTypes } from 'react'
+import { TouchableNativeFeedback, Text, View } from 'react-native'
 
 export default class NativeFeedbackButton extends Component {
   static propTypes = {
     title: PropTypes.string,
-    onPress: PropTypes.func,
+    onPress: PropTypes.func
   }
 
-  render() {
+  render () {
     return (
       <TouchableNativeFeedback
         onPress={this.props.onPress}
