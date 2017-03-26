@@ -1,7 +1,7 @@
-import locationService from './locationService';
+import locationService from './locationService'
 
 const services = {
   locationService: locationService
 }
 
-export default services;
+export default services
