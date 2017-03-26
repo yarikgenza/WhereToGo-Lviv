@@ -59,7 +59,7 @@ class LocationScreen extends Component {
   }
 
   getFormattedLocation (lat, lon) {
-    const { geocodingConfig: { baseUrl, apiKey }} = apiConfig
+    const { geocodingConfig: { baseUrl, apiKey } } = apiConfig
 
     fetch(`${baseUrl}?latlng=${lat},${lon}&key=${apiKey}`)
     .then(res => res.json())
@@ -69,11 +69,10 @@ class LocationScreen extends Component {
           isLocationReady: true
         })
       })
-      .catch(err => this.handleLocationError('No Internet'))
+      .catch(() => this.handleLocationError('No Internet'))
   }
 
   render () {
-    const { state: { lat, lon} } = this.props
     const { formatted, isLocationReady, error } = this.state
 
     return (

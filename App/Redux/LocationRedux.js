@@ -1,5 +1,4 @@
 import { createReducer, createActions } from 'reduxsauce'
-import { locationService } from '../Services'
 import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
