@@ -7,16 +7,21 @@ import NavigationDrawer from './NavigationDrawer'
 import LaunchScreen from '../Containers/LaunchScreen';
 import LocationScreen from '../Containers/LocationScreen';
 
+import CategoryScreen from '../Containers/Places/CategoryScreen';
+
 class NavigationRouter extends Component {
   render () {
     return (
       <Router>
-        <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
             <Scene initial key='launchScreen' component={LaunchScreen} hideNavBar/>
             <Scene key='locationScreen' component={LocationScreen} hideNavBar/>
+
+            <Scene key='drawer' component={NavigationDrawer} open={false}>
+              <Scene key='categoryScreen' component={CategoryScreen}/>
+            </Scene>
+
           </Scene>
-        </Scene>
       </Router>
     )
   }
