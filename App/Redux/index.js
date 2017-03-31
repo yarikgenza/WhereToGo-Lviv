@@ -6,7 +6,6 @@ export default () => {
   /* ------------- Assemble The Reducers ------------- */
   const rootReducer = combineReducers({
     github: require('./GithubRedux').reducer,
-    statusbar: require('./StatusBarRedux').reducer,
     location: require('./LocationRedux').reducer,
     login: require('./LoginRedux').reducer,
     search: require('./SearchRedux').reducer
