@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native';
+import NavBar from '../../Navigation/NavBar'
 
-export default class CategoryScreen extends Component {
+class CategoryScreen extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return(
       <View>
@@ -10,3 +16,6 @@ export default class CategoryScreen extends Component {
     )
   }
 }
+
+
+export default CategoryScreen
