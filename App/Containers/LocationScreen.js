@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import LocationActions from '../Redux/LocationRedux'
 import apiConfig from '../Config/api'
@@ -22,6 +23,10 @@ class LocationScreen extends Component {
     this.getLocation()
   }
 
+  handleNextButton () {
+    Actions.drawer()
+  }
+
   handleTryAgainButton () {
     this.setState({
       isLocationReady: false,
@@ -35,10 +40,14 @@ class LocationScreen extends Component {
        (position) => {
          const { longitude, latitude } = position.coords
          this.props.setLocation(latitude, longitude)
-         this.getFormattedLocation(latitude, longitude)
+         this.setState({
+           formatted: 'some street...',
+           isLocationReady: true
+         })
+         // this.getFormattedLocation(latitude, longitude)
        },
        (error) => this.handleLocationError(error),
-       {enableHighAccuracy: true, timeout: 45000, maximumAge: 1000}
+       {enableHighAccuracy: true, timeout: 30000, maximumAge: 1000}
      )
   }
 
@@ -101,6 +110,7 @@ class LocationScreen extends Component {
         { isLocationReady ? (
           <NativeFeedbackButton
             styles={styles.infoButton}
+            onPress={() => this.handleNextButton()}
             textStyles={styles.buttonText}
             title={'Search places near you'}
           />
