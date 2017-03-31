@@ -1,44 +1,17 @@
 import React, { Component, PropTypes } from 'react'
-import { View, Text, Image } from 'react-native'
-import { connect } from 'react-redux'
+import { View, Text } from 'react-native'
 import NavItems from './NavItems'
 import styles from './Styles/NavBarStyles'
 import { Metrics } from '../Themes'
 
-class NavBar extends Component {
-
-  constructor (props) {
-    super(props);
-  }
-
-  renderMiddle () {
-      return (
-        <Text style={styles.title}>Category</Text>
-      )
-  }
-
-  renderRightButtons () {
-    return <View style={{width: Metrics.icons.medium}} />
-  }
-
-  renderLeftButtons () {
-      return (
-        <View style={styles.leftButtons}>
-          {NavItems.hamburgerButton()}
-        </View>
-      )
-  }
-
-  render () {
-
-    return (
-      <View style={styles.container}>
-        {this.renderLeftButtons()}
-        {this.renderMiddle()}
-        {this.renderRightButtons()}
+export default NavBar = ({ title, button }) => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.leftButtons}>
+        {button !== 'back' ? NavItems.backButton() : NavItems.hamburgerButton()}
       </View>
-    )
-  }
+      <Text style={styles.title}>{title}</Text>
+      <View style={{width: Metrics.icons.medium}} />
+    </View>
+  )
 }
-
-export default NavBar
