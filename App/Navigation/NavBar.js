@@ -8,9 +8,9 @@ export default NavBar = ({ title, button }) => {
   return (
     <View style={styles.container}>
       <View style={styles.leftButtons}>
-        {button !== 'back' ? NavItems.backButton() : NavItems.hamburgerButton()}
+        {button === 'back' ? NavItems.backButton() : NavItems.hamburgerButton()}
       </View>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title}>{title || 'WhereToGo'}</Text>
       <View style={{width: Metrics.icons.medium}} />
     </View>
   )

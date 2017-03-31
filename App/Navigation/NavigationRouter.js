@@ -16,9 +16,8 @@ class NavigationRouter extends Component {
         <Scene initial key='launchScreen' component={LaunchScreen} hideNavBar/>
         <Scene key='locationScreen' component={LocationScreen} hideNavBar/>
 
-
         <Scene key='drawer' component={NavigationDrawer} open={false}>
-          <Scene key='drawerChildrenWrapper' navigationBarStyle={{ opacity: 0}} hideNavBar>
+          <Scene key='drawerChildrenWrapper' navigationBarStyle={{ opacity: 0}}>
             <Scene initial key='categoryScreen' component={CategoryScreen} />
           </Scene>
         </Scene>

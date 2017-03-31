@@ -5,13 +5,6 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Colors, Metrics } from '../Themes'
 
-const openDrawer = () => {
-  NavigationActions.refresh({
-    key: 'drawer',
-    open: true
-  })
-}
-
 export default {
   backButton () {
     return (
@@ -27,7 +20,7 @@ export default {
 
   hamburgerButton () {
     return (
-      <TouchableOpacity onPress={openDrawer}>
+      <TouchableOpacity>
         <Icon name='bars'
           size={Metrics.icons.medium}
           color={Colors.snow}
@@ -35,18 +28,5 @@ export default {
         />
       </TouchableOpacity>
     )
-  },
-
-  searchButton (callback) {
-    return (
-      <TouchableOpacity onPress={callback}>
-        <Icon name='search'
-          size={Metrics.icons.small}
-          color={Colors.snow}
-          style={styles.searchButton}
-        />
-      </TouchableOpacity>
-    )
   }
-
 }

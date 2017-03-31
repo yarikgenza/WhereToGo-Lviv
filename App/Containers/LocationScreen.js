@@ -3,7 +3,6 @@ import { View, Text, ActivityIndicator } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import LocationActions from '../Redux/LocationRedux'
-import StatusBarActions from '../Redux/StatusBarRedux'
 import apiConfig from '../Config/api'
 
 import NativeFeedbackButton from '../Components/NativeFeedbackButton'
@@ -41,7 +40,6 @@ class LocationScreen extends Component {
        (position) => {
          const { longitude, latitude } = position.coords
          this.props.setLocation(latitude, longitude)
-         this.props.statusBarInit('categora002');
          this.setState({
            formatted: 'some street...',
            isLocationReady: true
@@ -49,7 +47,7 @@ class LocationScreen extends Component {
          //this.getFormattedLocation(latitude, longitude)
        },
        (error) => this.handleLocationError(error),
-       {enableHighAccuracy: true, timeout: 45000, maximumAge: 1000}
+       {enableHighAccuracy: true, timeout: 30000, maximumAge: 1000}
      )
   }
 
@@ -143,7 +141,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setLocation: (lat, lon) => dispatch(LocationActions.locationSet(lat, lon)),
-    statusBarInit: (title) => dispatch(StatusBarActions.statusBarInit(title))
   }
 }
 

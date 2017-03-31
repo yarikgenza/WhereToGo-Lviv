@@ -12,43 +12,13 @@ class CategoryScreen extends Component {
 
   render() {
 
-    alert("hi")
-
     return(
       <View>
-       <NavBar/>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
-        <Text>Hello world</Text>
+       <NavBar title='Сategories' button="hamburger"/>
         <Text>Hello world</Text>
       </View>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    state: state.navBar
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    statusBarInit: (title) => dispatch(StatusBarActions.statusBarInit(title))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryScreen)
+export default CategoryScreen
