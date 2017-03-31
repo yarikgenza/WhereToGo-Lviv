@@ -23,8 +23,8 @@ class LocationScreen extends Component {
     this.getLocation()
   }
 
-  handleNextButton() {
-    Actions.drawer();
+  handleNextButton () {
+    Actions.drawer()
   }
 
   handleTryAgainButton () {
@@ -44,7 +44,7 @@ class LocationScreen extends Component {
            formatted: 'some street...',
            isLocationReady: true
          })
-         //this.getFormattedLocation(latitude, longitude)
+         // this.getFormattedLocation(latitude, longitude)
        },
        (error) => this.handleLocationError(error),
        {enableHighAccuracy: true, timeout: 30000, maximumAge: 1000}
@@ -140,7 +140,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setLocation: (lat, lon) => dispatch(LocationActions.locationSet(lat, lon)),
+    setLocation: (lat, lon) => dispatch(LocationActions.locationSet(lat, lon))
   }
 }
 
