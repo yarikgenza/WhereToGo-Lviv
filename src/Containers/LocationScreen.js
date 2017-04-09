@@ -1,88 +1,90 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import { geocoding as geocodingApi } from '../Config';
 
-import { setLocation } from '../Redux/Actions/location';
+import { setLocation, setFormatted } from '../Redux/Actions/location';
 
-import NativeFeedbackButton from '../Components/NativeFeedbackButton'
-import styles from './Styles/LocationScreenStyles'
+import NativeFeedbackButton from '../Components/NativeFeedbackButton';
+import styles from './Styles/LocationScreenStyles';
 
 class LocationScreen extends Component {
 
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
       isLocationReady: false,
       error: '',
-      formatted: ''
-    }
+    };
   }
 
-  componentDidMount () {
-    this.getLocation()
+  componentDidMount() {
+    this.getLocation();
   }
 
-  handleNextButton () {
-    Actions.drawer()
+  handleNextButton() {
+    Actions.drawer();
   }
 
-  handleTryAgainButton () {
+  handleTryAgainButton() {
     this.setState({
       isLocationReady: false,
-      error: ''
-    })
-    this.getLocation()
+      error: '',
+    });
+    this.getLocation();
   }
 
-  getLocation () {
+  getLocation() {
     navigator.geolocation.getCurrentPosition(
        (position) => {
-         const { longitude, latitude } = position.coords
-         this.props.setLocation(latitude, longitude)
+         const { longitude, latitude } = position.coords;
+         this.props.setLocation(latitude, longitude);
          this.setState({
            formatted: 'some street...',
-           isLocationReady: true
-         })
+           isLocationReady: true,
+         });
+         this.props.setFormatted('some street..');
          // this.getFormattedLocation(latitude, longitude)
        },
-       (error) => this.handleLocationError(error),
-       {enableHighAccuracy: true, timeout: 30000, maximumAge: 1000}
-     )
+       error => this.handleLocationError(error),
+       { enableHighAccuracy: true, timeout: 30000, maximumAge: 1000 },
+     );
   }
 
-  handleLocationError (error) {
+  handleLocationError(error) {
     if (error === 'No available location provider.') {
       this.setState({
-        error: 'Please, turn-on GPS'
-      })
+        error: 'Please, turn-on GPS',
+      });
     } else if (error === 'Location request timed out') {
       this.setState({
-        error: 'Please, try go outside and try again'
-      })
+        error: 'Please, try go outside and try again',
+      });
     } else if (error === 'No Internet') {
       this.setState({
-        error: 'No internet connection'
-      })
+        error: 'No internet connection',
+      });
     }
   }
 
-  getFormattedLocation (lat, lon) {
-    const { geocodingConfig: { baseUrl, apiKey } } = apiConfig
+  getFormattedLocation(lat, lon) {
+    const { baseUrl, apiKey } = geocodingApi;
 
     fetch(`${baseUrl}?latlng=${lat},${lon}&key=${apiKey}`)
     .then(res => res.json())
       .then((res) => {
         this.setState({
-          formatted: res.results[0].formatted_address,
-          isLocationReady: true
-        })
+          isLocationReady: true,
+        });
+        this.props.setFormatted(res.results[0].formatted_address);
       })
-      .catch(() => this.handleLocationError('No Internet'))
+      .catch(() => this.handleLocationError('No Internet'));
   }
 
-  render () {
-    const { formatted, isLocationReady, error } = this.state
+  render() {
+    const { isLocationReady, error } = this.state;
+    const { formatted } = this.props;
 
     return (
       <View style={styles.container}>
@@ -123,21 +125,25 @@ class LocationScreen extends Component {
               textStyles={styles.buttonText}
               title={'TRY AGAIN'}
               onPress={() => this.handleTryAgainButton()}
-           />
+            />
          )
         )
         }
       </View>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  const { location: { latitude, longitude } } = state;
+  const { location: { formatted } } = state;
   return {
-    latitude,
-    longitude
-  }
-}
+    formatted,
+  };
+};
 
-export default connect(mapStateToProps)(LocationScreen)
+const mapDispatchToProps = dispatch => ({
+  setLocation: (latitude, longitude) => dispatch(setLocation(latitude, longitude)),
+  setFormatted: formatted => dispatch(setFormatted(formatted)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationScreen);
