@@ -3,15 +3,25 @@ import { Image, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import * as Animatable from 'react-native-animatable';
 
+import { connect } from 'react-redux';
+import { setLocation, setFormatted } from '../Redux/Actions/location';
+
 import NativeFeedbackButton from '../Components/NativeFeedbackButton';
 import Images from '../Themes/images';
 
 import styles from './Styles/LaunchScreenStyles';
 
-export default class LaunchScreen extends Component {
+class LaunchScreen extends Component {
 
   handleNextButtonPress() {
     Actions.locationScreen();
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.props.setLocation('123', 'test');
+      this.props.setFormatted(`traliaia`)
+    }, 3000)
   }
 
   render() {
@@ -31,7 +41,7 @@ export default class LaunchScreen extends Component {
             useNativeDriver
             iterationCount={1}
           >
-              Where to go?
+              {this.props.longitude}Where to go? {this.props.formatted}{this.props.latitude}
           </Animatable.Text>
           <Animatable.Text
             style={styles.headingName}
@@ -54,3 +64,21 @@ export default class LaunchScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const { location: { latitude, longitude, formatted } } = state;
+  return {
+    latitude,
+    longitude,
+    formatted
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLocation: (latitude, longitude) => dispatch(setLocation(latitude, longitude)),
+    setFormatted: (formatted) => dispatch(setFormatted(formatted))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen);
