@@ -20,6 +20,7 @@ Currently, WhereToGo is in active development and was created as pet-project.
 
   * React Native
   * Redux
+  * Native Base UI
   * Common react-native libraries, etc.
 
 ## TO-DO
