@@ -1,5 +1,4 @@
-import './App/Config/ReactotronConfig'
-import { AppRegistry } from 'react-native'
-import App from './App/Containers/App'
+import { AppRegistry } from 'react-native';
+import bootstrap from './src/main';
 
-AppRegistry.registerComponent('WhereToGo', () => App)
+AppRegistry.registerComponent('WhereToGo', () => bootstrap);
