@@ -5,11 +5,9 @@ import scenes from './scenes';
 
 global.isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 
-const bootstrap = () => {
-  return (
-    <Router scenes={scenes} />
-  )
-}
+const bootstrap = () => (
+  <Router scenes={scenes} />
+  );
 
 
 export default bootstrap;
