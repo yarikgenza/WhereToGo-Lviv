@@ -8,6 +8,9 @@ class CategoryScreen extends Component {
         <Content>
           <Text>Hello world</Text>
           <Button><Text>Some button...</Text></Button>
+          <Text>Food and drink</Text>
+          <Text>Places to visit</Text>
+          <Text>Entertainment</Text>
         </Content>
       </Container>
     );

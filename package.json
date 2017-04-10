@@ -9,6 +9,8 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"color": "^1.0.3",
+		"lodash": "^4.17.4",
 		"native-base": "^2.1.1",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.43.2",

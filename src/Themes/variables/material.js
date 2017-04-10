@@ -276,7 +276,7 @@ export default {
 
     // Other
   borderRadiusBase: 2,
-  borderWidth: (1/PixelRatio.getPixelSizeForLayoutSize(1)),
+  borderWidth: (1 / PixelRatio.getPixelSizeForLayoutSize(1)),
   contentPadding: 10,
 
   get darkenHeader() {

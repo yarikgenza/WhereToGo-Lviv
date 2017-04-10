@@ -46,7 +46,7 @@ export default {
   segmentActiveTextColor: '#3F51B5',
   segmentBorderColor: '#fff',
   segmentBorderColorMain: '#3F51B5',
-  
+
     // New Variable
   get defaultTextColor() {
     return this.textColor;
@@ -276,7 +276,7 @@ export default {
 
     // Other
   borderRadiusBase: (platform === 'ios') ? 5 : 2,
-  borderWidth: (1/PixelRatio.getPixelSizeForLayoutSize(1)),
+  borderWidth: (1 / PixelRatio.getPixelSizeForLayoutSize(1)),
   contentPadding: 10,
 
   get darkenHeader() {
