@@ -248,7 +248,7 @@ export default {
   radioColor: '#7e7e7e',
 
   get radioSelectedColor() {
-    return this.radioColor; //make it darked later...
+    return this.radioColor; // make it darked later...
   },
 
 
@@ -285,7 +285,7 @@ export default {
   contentPadding: 10,
 
   get darkenHeader() {
-    return this.tabBgColor; //make it darken later.. TO-DO
+    return this.tabBgColor; // make it darken later.. TO-DO
   },
 
   dropdownBg: '#000',

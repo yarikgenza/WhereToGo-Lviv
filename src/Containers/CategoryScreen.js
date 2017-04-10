@@ -8,37 +8,37 @@ class CategoryScreen extends Component {
     return (
       <Container>
         <Grid>
-        <Row size={3}>
-          <Content>
-            <Text style={{ color: 'white'}}>What's more suitable for u?</Text>
-          </Content>
-        </Row>
+          <Row size={3}>
+            <Content>
+              <Text style={{ color: 'white' }}>What's more suitable for u?</Text>
+            </Content>
+          </Row>
 
-        <Row size={1}>
+          <Row size={1}>
 
-        <Col>
-          <Content style={{ borderColor: 'white', borderWidth: 1, padding: 'auto'}}>
-            <Icon name='ios-pizza'style={{alignSelf: 'center',fontSize: 50, color: vars.defaultOrangeTextColor}} />
-            <Text style={{alignSelf: 'center', color: 'white'}}>Food and Drink</Text>
-          </Content>
-        </Col>
+            <Col>
+              <Content style={{ borderColor: 'white', borderWidth: 1, padding: 'auto' }}>
+                <Icon name="ios-pizza"style={{ alignSelf: 'center', fontSize: 50, color: vars.defaultOrangeTextColor }} />
+                <Text style={{ alignSelf: 'center', color: 'white' }}>Food and Drink</Text>
+              </Content>
+            </Col>
 
-        <Col>
-         <Content>
-            <Icon name='ios-flag'style={{alignSelf: 'center',fontSize: 50, color: vars.defaultOrangeTextColor}} />
-            <Text style={{alignSelf: 'center', color: 'white'}}>Places to visit</Text>
-         </Content>
-        </Col>
+            <Col>
+              <Content>
+                <Icon name="ios-flag"style={{ alignSelf: 'center', fontSize: 50, color: vars.defaultOrangeTextColor }} />
+                <Text style={{ alignSelf: 'center', color: 'white' }}>Places to visit</Text>
+              </Content>
+            </Col>
 
-        <Col>
-         <Content>
-            <Icon name='md-wine'style={{alignSelf: 'center',fontSize: 50, color: vars.defaultOrangeTextColor}} />
-            <Text style={{alignSelf: 'center',color: 'white'}}>Entertainment</Text>
-          </Content>
-        </Col>
+            <Col>
+              <Content>
+                <Icon name="md-wine"style={{ alignSelf: 'center', fontSize: 50, color: vars.defaultOrangeTextColor }} />
+                <Text style={{ alignSelf: 'center', color: 'white' }}>Entertainment</Text>
+              </Content>
+            </Col>
 
-        </Row>
-        <Row size={1}></Row>
+          </Row>
+          <Row size={1} />
         </Grid>
       </Container>
     );
