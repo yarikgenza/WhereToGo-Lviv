@@ -1,7 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-native-router-flux';
+import { StyleProvider } from 'native-base';
 import configureStore from './configureStore';
+import getTheme from './Themes/components';
 
 import scenes from './scenes';
 
@@ -11,7 +13,9 @@ const store = configureStore();
 
 const bootstrap = () => (
   <Provider store={store}>
-    <Router scenes={scenes} />
+    <StyleProvider style={getTheme()}>
+      <Router scenes={scenes} />
+    </StyleProvider>
   </Provider>
 );
 
