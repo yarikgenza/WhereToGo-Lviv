@@ -50,6 +50,7 @@ export default {
 
   // Common colors //
   defaultBackgroundColor: '#2b323b',
+  defaultOrangeTextColor: '#fac308',
 
     // New Variable
   get defaultTextColor() {
@@ -174,7 +175,7 @@ export default {
   toolbarDefaultBorder: (platform === 'ios') ? '#a7a6ab' : '#3F51B5',
   iosStatusbar: (platform === 'ios') ? 'dark-content' : 'light-content',
   get statusBarColor() {
-    return color(this.toolbarDefaultBg).darken(0.2).hexString();
+    return this.toolbarDefaultBg; // do it darken later.. TO-DO
   },
 
 
@@ -247,7 +248,7 @@ export default {
   radioColor: '#7e7e7e',
 
   get radioSelectedColor() {
-    return color(this.radioColor).darken(0.2).hexString();
+    return this.radioColor; //make it darked later...
   },
 
 
@@ -284,7 +285,7 @@ export default {
   contentPadding: 10,
 
   get darkenHeader() {
-    return color(this.tabBgColor).darken(0.03).hexString();
+    return this.tabBgColor; //make it darken later.. TO-DO
   },
 
   dropdownBg: '#000',
