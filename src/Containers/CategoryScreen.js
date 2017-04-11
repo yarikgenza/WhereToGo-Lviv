@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import { TouchableOpacity, View } from 'react-native';
 import { Grid, Col, Row } from 'react-native-easy-grid';
 import { Container, Content, Text, Icon, Card } from 'native-base';
@@ -6,7 +8,9 @@ import * as Animatable from 'react-native-animatable';
 import vars from '../Themes/variables/platform';
 import styles from './Styles/CategoryScreenStyles';
 
-const cards = [
+import { setCategory } from '../Redux/Actions/places';
+
+const categories = [
   {
     title: 'Food and Drink',
     icon: 'ios-pizza',
@@ -26,17 +30,17 @@ const cards = [
 
 class CategoryScreen extends Component {
 
-  handlePress(code) {
-    alert(`${code} was pressed`);
+  handleCardPress(code) {
+    this.props.setCategory([code]);
   }
 
   render() {
-    const renderCards = () => cards.map((card, index) => (
+    const renderCards = () => categories.map((category, index) => (
       <Card key={index} style={{ alignItems: 'center', justifyContent: 'center', borderColor: 'transparent', backgroundColor: vars.defaultBackgroundColor }}>
         <Animatable.View animation="swing" delay={600} duration={1500} iterationCount={1}>
-          <TouchableOpacity onPress={() => this.handlePress(card.code)}>
-            <Icon name={card.icon} style={{ alignSelf: 'center', fontSize: 50, color: vars.defaultOrangeTextColor, padding: 7 }} />
-            <Text style={{ alignSelf: 'center', color: 'white' }}>{ card.title }</Text>
+          <TouchableOpacity onPress={() => this.handleCardPress(category.code)}>
+            <Icon name={category.icon} style={{ alignSelf: 'center', fontSize: 50, color: vars.defaultOrangeTextColor, padding: 7 }} />
+            <Text style={{ alignSelf: 'center', color: 'white' }}>{ category.title }</Text>
           </TouchableOpacity>
         </Animatable.View>
       </Card>
@@ -70,4 +74,10 @@ class CategoryScreen extends Component {
   }
 }
 
-export default CategoryScreen;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  setCategory: category => dispatch(setCategory(category)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryScreen);
