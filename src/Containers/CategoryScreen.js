@@ -32,6 +32,7 @@ class CategoryScreen extends Component {
 
   handleCardPress(code) {
     this.props.setCategory([code]);
+    Actions.placesScreen();
   }
 
   render() {
