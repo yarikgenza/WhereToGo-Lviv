@@ -50,9 +50,9 @@ class CategoryScreen extends Component {
           </Row>
 
           <Row size={1.5}>
-           <View style={styles.headingContainer}>
-            <Icon style={{ fontSize: 40, color: vars.defaultOrangeTextColor }} name="ios-navigate-outline" />
-           </View>
+            <View style={styles.headingContainer}>
+              <Icon style={{ fontSize: 40, color: vars.defaultOrangeTextColor }} name="ios-navigate-outline" />
+            </View>
           </Row>
 
         </Grid>
