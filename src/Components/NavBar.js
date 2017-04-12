@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { Container, Header, Left, Right, Body, Button, Title, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
+import categories from '../Services/categoryService';
 
-const NavBar = ({ title, icon = 'menu' }) => (
+const showFilter = (object) => {
+  if (object === 'category') {
+    const payload = categories.map(item => item.code);
+    alert(payload);
+  }
+}
+
+const NavBar = ({ title, icon = 'menu', filter, search }) => (
   <Container>
       <Header>
           <Left>
@@ -21,6 +29,11 @@ const NavBar = ({ title, icon = 'menu' }) => (
               <Title>{title}</Title>
           </Body>
           <Right>
+            { filter ? (
+              <Button onPress={() => showFilter(filter)} transparent>
+                <Icon name='ios-funnel' />
+              </Button>
+            ) : null }
           </Right>
       </Header>
   </Container>

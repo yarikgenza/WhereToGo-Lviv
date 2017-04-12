@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import { Container } from 'native-base';
+import { Container, Text } from 'native-base';
 import { connect } from 'react-redux';
 import NavBar from '../../Components/NavBar';
 
 
 class PlacesScreen extends Component {
   render() {
-
-      return (
-            <Container>
-              <NavBar title="Places search" />
-            </Container>
-        );
+    return (
+      <Container>
+        <NavBar title="Places search" filter='category' />
+        <Text>{this.props.places.category}</Text>
+      </Container>
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return  {
-      state: state.places
+      places: state.places
     }
 };
 

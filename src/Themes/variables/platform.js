@@ -48,7 +48,7 @@ export default {
   segmentBorderColorMain: (platform === 'ios') ? '#a7a6ab' : '#3F51B5',
 
 
-  // Common colors //
+  // Common colors
   defaultBackgroundColor: '#2b323b',
   defaultOrangeTextColor: '#fac308',
 
@@ -164,7 +164,7 @@ export default {
 
     // Header
   toolbarBtnColor: (platform === 'ios') ? '#007aff' : '#fff',
-  toolbarDefaultBg: (platform === 'ios') ? '#F8F8F8' : '#3F51B5',
+  toolbarDefaultBg: (platform === 'ios') ? '#F8F8F8' : '#2b323b',
   toolbarHeight: (platform === 'ios') ? 64 : 56,
   toolbarIconSize: (platform === 'ios') ? 20 : 22,
   toolbarSearchIconSize: (platform === 'ios') ? 20 : 23,

@@ -8,25 +8,8 @@ import * as Animatable from 'react-native-animatable';
 import vars from '../Themes/variables/platform';
 import styles from './Styles/CategoryScreenStyles';
 
+import categories from '../Services/categoryService';
 import { setCategory } from '../Redux/Actions/places';
-
-const categories = [
-  {
-    title: 'Food and Drink',
-    icon: 'ios-pizza',
-    code: 'food',
-  },
-  {
-    title: 'Places to visit',
-    icon: 'ios-flag',
-    code: 'places_to_visit',
-  },
-  {
-    title: 'Entertainment',
-    icon: 'md-wine',
-    code: 'entertainment',
-  },
-];
 
 class CategoryScreen extends Component {
 
