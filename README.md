@@ -6,15 +6,15 @@
 **Inspired by Foursquare, WhereToGo - Lviv is tourist-focused application to search for nearby places in Lviv.**
 
 * Lviv-themed UI
-* Food / rest / entertainment, etc.
-* Special offers
-* A lot of original places to visit
+* Food and drink / places to visit / entertainment, etc.
+* Events
+* History, check-ins
 * "Lviv-lovers" community
 
 
 ## Project
 
-Currently, WhereToGo is in active development and was created as pet-project.
+Currently, WhereToGo under the development and is created as a pet-project.
 
 **Techologies stack**
 
@@ -29,7 +29,7 @@ Currently, WhereToGo is in active development and was created as pet-project.
 
 - [x] Lviv-town-logo
 - [x] Title of Application
-- [x] Add animation
+- [x] Animations
 - [x] Next button
 
 **Location screen**
@@ -38,11 +38,22 @@ Currently, WhereToGo is in active development and was created as pet-project.
 - [x] Store user's location in the redux container
 - [x] Convert location to human-friendly format
 - [x] Button to the next screen
-- [x] Error handling
+- [x] Location error handling
 
-**Main screen**
+**Category screen**
 
-**Sidebar**
+- [x] Ability to choose from 3 categories
+- [x] Animations
+
+**Main components**
+
+**Navbar**
+
+- [x] Hamburger-menu
+- [x] Filter
+- [ ] Search (icon + functionality)
+
+**Drawer**
 
 - [ ] Login/register (not mandatory)
 - [ ] Places
@@ -54,7 +65,7 @@ Currently, WhereToGo is in active development and was created as pet-project.
 **Places**
 
 - [ ] Food and Drink
-- [ ] Architecture
+- [ ] Places to visit
 - [ ] Entertainment
 - [ ] List view
 - [ ] Dynamical places loading
@@ -72,4 +83,4 @@ Currently, WhereToGo is in active development and was created as pet-project.
 - [ ] Auth using fb
 
 
-Project under MIT license.
+Project is under the MIT license.
