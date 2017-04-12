@@ -24,7 +24,7 @@ class LocationScreen extends Component {
   }
 
   handleNextButton() {
-    Actions.drawer();
+    Actions.categoryScreen();
   }
 
   handleTryAgainButton() {

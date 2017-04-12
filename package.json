@@ -9,10 +9,13 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"color": "^1.0.3",
+		"lodash": "^4.17.4",
 		"native-base": "^2.1.1",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.43.2",
 		"react-native-animatable": "^1.1.1",
+		"react-native-easy-grid": "^0.1.8",
 		"react-native-router-flux": "^3.38.0",
 		"react-native-vector-icons": "^4.0.1",
 		"react-redux": "^5.0.3",
