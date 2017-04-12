@@ -9,34 +9,34 @@ const showFilter = (object) => {
     const payload = categories.map(item => item.code);
     alert(payload);
   }
-}
+};
 
 const NavBar = ({ title, icon = 'menu', filter, search }) => (
   <Container>
-      <Header>
-          <Left>
-           { icon === 'menu' ? (
-             <Button transparent>
-               <Icon name='menu' />
-             </Button>
+    <Header>
+      <Left>
+        { icon === 'menu' ? (
+          <Button transparent>
+            <Icon name="menu" />
+          </Button>
            ) : (
              <Button onPress={() => Actions.pop()} transparent>
-               <Icon name='arrow-back' />
-            </Button>
+               <Icon name="arrow-back" />
+             </Button>
            )}
-          </Left>
-          <Body>
-              <Title>{title}</Title>
-          </Body>
-          <Right>
-            { filter ? (
-              <Button onPress={() => showFilter(filter)} transparent>
-                <Icon name='ios-funnel' />
-              </Button>
+      </Left>
+      <Body>
+        <Title>{title}</Title>
+      </Body>
+      <Right>
+        { filter ? (
+          <Button onPress={() => showFilter(filter)} transparent>
+            <Icon name="ios-funnel" />
+          </Button>
             ) : null }
-          </Right>
-      </Header>
+      </Right>
+    </Header>
   </Container>
-)
+);
 
 export default NavBar;

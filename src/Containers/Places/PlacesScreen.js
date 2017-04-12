@@ -8,18 +8,16 @@ class PlacesScreen extends Component {
   render() {
     return (
       <Container>
-        <NavBar title="Places search" filter='category' />
+        <NavBar title="Places search" filter="category" />
         <Text>{this.props.places.category}</Text>
       </Container>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  return  {
-      places: state.places
-    }
-};
+const mapStateToProps = state => ({
+  places: state.places,
+});
 
 const mapDispatchToProps = dispatch => ({});
 
