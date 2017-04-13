@@ -37,7 +37,7 @@ class NavBar extends Component {
                )}
           </Left>
           <Body>
-            <Title>{title} {this.props.ui.isDrawerOpen ? 'open' : 'closed'}</Title>
+            <Title>{title}</Title>
           </Body>
           <Right>
             { filter ? (

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
+import { Container, List, ListItem } from 'native-base';
 
 class SideBar extends Component {
   render() {
