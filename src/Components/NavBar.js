@@ -1,42 +1,64 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Container, Header, Left, Right, Body, Button, Title, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import { openDrawer } from '../Redux/Actions/ui';
 
 import categories from '../Services/categoryService';
 
-const showFilter = (object) => {
-  if (object === 'category') {
-    const payload = categories.map(item => item.code);
-    alert(payload);
+class NavBar extends Component {
+
+  constructor() {
+    super();
   }
-};
 
-const NavBar = ({ title, icon = 'menu', filter, search }) => (
-  <Container>
-    <Header>
-      <Left>
-        { icon === 'menu' ? (
-          <Button transparent>
-            <Icon name="menu" />
-          </Button>
-           ) : (
-             <Button onPress={() => Actions.pop()} transparent>
-               <Icon name="arrow-back" />
-             </Button>
-           )}
-      </Left>
-      <Body>
-        <Title>{title}</Title>
-      </Body>
-      <Right>
-        { filter ? (
-          <Button onPress={() => showFilter(filter)} transparent>
-            <Icon name="ios-funnel" />
-          </Button>
-            ) : null }
-      </Right>
-    </Header>
-  </Container>
-);
+  showFilter(object) {
+    if (object === 'category') {
+      const payload = categories.map(item => item.code);
+      alert(payload);
+    }
+  }
 
-export default NavBar;
+  render() {
+    const { title, icon = 'menu', filter, search } = this.props;
+
+    return (
+      <Container>
+        <Header>
+          <Left>
+            { icon === 'menu' ? (
+              <Button onPress={() => this.props.openDrawer()} transparent>
+                <Icon name="menu" />
+              </Button>
+               ) : (
+                 <Button onPress={() => Actions.pop()} transparent>
+                   <Icon name="arrow-back" />
+                 </Button>
+               )}
+          </Left>
+          <Body>
+            <Title>{title} {this.props.ui.isDrawerOpen ? 'open' : 'closed'}</Title>
+          </Body>
+          <Right>
+            { filter ? (
+              <Button onPress={() => this.showFilter(filter)} transparent>
+                <Icon name="ios-funnel" />
+              </Button>
+                ) : null }
+          </Right>
+        </Header>
+      </Container>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  ui: state.ui,
+});
+
+const mapDispatchToProps = dispatch => ({
+  openDrawer: () => dispatch(openDrawer()),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
