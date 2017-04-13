@@ -13,6 +13,7 @@ class AppNavigator extends Component {
         ref={ref => this._drawer = ref}
         type="static"
         openDrawerOffset={100}
+        tapToClose
         tweenHandler={Drawer.tweenPresets.parallax}
         open={this.props.ui.isDrawerOpen}
         onClose={() => this.props.closeDrawer()}
