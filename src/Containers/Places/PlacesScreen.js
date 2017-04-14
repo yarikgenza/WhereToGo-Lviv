@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
+import { Container, Text, Content } from 'native-base';
 import { connect } from 'react-redux';
 import NavBar from '../../Components/NavBar';
 
@@ -7,9 +7,11 @@ import NavBar from '../../Components/NavBar';
 class PlacesScreen extends Component {
   render() {
     return (
-      <Container>
+      <Container style={{ backgroundColor: '#2b323b' }}>
         <NavBar title="Places search" filter="category" />
-        <Text>{this.props.places.category}</Text>
+        <Content style={{ height: 500 }}>
+          <Text>{this.props.places.category}</Text>
+        </Content>
       </Container>
     );
   }
