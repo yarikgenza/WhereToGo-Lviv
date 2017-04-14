@@ -4,6 +4,7 @@
 
 export const OPEN_DRAWER = 'ui/OPEN_DRAWER';
 export const CLOSE_DRAWER = 'ui/CLOSE_DRAWER';
+export const CHANGE_ROUTE = 'ui/CHANGE_ROUTE';
 
 /**
  * Reducer
@@ -11,6 +12,7 @@ export const CLOSE_DRAWER = 'ui/CLOSE_DRAWER';
 
 const initialState = {
   isDrawerOpen: false,
+  route: 'placesScreen',
 };
 
 export default function ui(state = initialState, action) {
@@ -25,6 +27,12 @@ export default function ui(state = initialState, action) {
     case CLOSE_DRAWER: {
       return { ...state,
         isDrawerOpen: false,
+      };
+    }
+
+    case CHANGE_ROUTE: {
+      return { ...state,
+        route: action.route,
       };
     }
 
