@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import NavBar from '../../Components/NavBar';
 
 
-class PlacesScreen extends Component {
+class EventsScreen extends Component {
   render() {
     return (
       <Container style={{ backgroundColor: '#2b323b' }}>
-        <NavBar title="Places search" filter="category" />
+        <NavBar title="Events search" filter="category" />
         <Content style={{ height: 500 }}>
-          <Text>{this.props.places.category}</Text>
+          <Text>Nothing here yet..</Text>
         </Content>
       </Container>
     );
@@ -23,4 +23,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlacesScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(EventsScreen);
