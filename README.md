@@ -53,14 +53,14 @@ Currently, WhereToGo under the development and is created as a pet-project.
 - [x] Filter
 - [ ] Search (icon + functionality)
 
-**Drawer**
+**Sidebar**
 
-- [ ] Login/register (not mandatory)
-- [ ] Places
-- [ ] Events
-- [ ] History
-- [ ] Help
-- [ ] Setting (not mandatory)
+- [x] (Login/register) || profile (not mandatory)
+- [x] Places
+- [x] Events
+- [x] History
+- [x] Help
+- [x] Setting (not mandatory)
 
 **Places**
 
