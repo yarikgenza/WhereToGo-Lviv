@@ -39,6 +39,5 @@ export default function places(state = initialState, action) {
 
     default:
       return state;
-
   }
 }

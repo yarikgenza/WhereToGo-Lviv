@@ -1,7 +1,7 @@
-import { apiKey, baseUrl } from '../Config/places.config';
+import config from '../Config/placesConfig';
+const { apiKey, baseUrl } = config;
 
-
-/* export const fetchNearby = (config) => {
+export const fetchNearby = (config) => {
   const { lat, lon, keyword } = config;
 
   return new Promise((resolve, reject) => {
@@ -9,11 +9,5 @@ import { apiKey, baseUrl } from '../Config/places.config';
       .then(raw => raw.json())
         .then(json => resolve(json))
       .catch(e => reject(e));
-  })
-}*/
-
-export const fetch = () => new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('Урраа!');
-  }, 3000);
-});
+  });
+};

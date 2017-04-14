@@ -14,7 +14,7 @@ export const setCategory = category => ({
  * fetch places
  */
 
-export const fetch = config => dispatch => placesApi.fetch(config)
+export const fetchNearby = config => dispatch => placesApi.fetchNearby(config)
     .then((data) => {
       dispatch({
         type: FETCH_SUCCESS,

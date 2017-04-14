@@ -3,7 +3,7 @@ import { Container, Content, Text, Spinner } from 'native-base';
 import { connect } from 'react-redux';
 import NavBar from '../../Components/NavBar';
 
-import { fetch } from '../../Redux/Actions/places';
+import { fetchNearby } from '../../Redux/Actions/places';
 
 class PlacesScreen extends Component {
 
@@ -26,15 +26,23 @@ class PlacesScreen extends Component {
     }
   }
 
+  fetchPlacesNearby() {
+    const { latitude, longitude } = this.props.location;
+
+    this.props.fetchNearby({
+      lat: latitude,
+      lon: longitude,
+      keyword: 'restaurant',
+    });
+  }
+
   componentDidMount() {
     if (this.props.places.data) {
       this.setState({
         isLoading: false,
       });
     } else {
-      this.props.fetch({
-        type: 'nearby',
-      });
+      this.fetchPlacesNearby();
     }
   }
 
@@ -47,7 +55,7 @@ class PlacesScreen extends Component {
         <NavBar title="Places search" filter="category" />
         <Content>
           { isLoading ? <Spinner /> : (
-            <Text style={{ color: 'white' }}>{places.data}</Text>)
+            <Text style={{ color: 'white' }}>{JSON.stringify(places.data)} {places.error}</Text>)
           }
         </Content>
       </Container>
@@ -57,10 +65,11 @@ class PlacesScreen extends Component {
 
 const mapStateToProps = state => ({
   places: state.places,
+  location: state.location,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: config => dispatch(fetch(config)),
+  fetchNearby: config => dispatch(fetchNearby(config)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlacesScreen);
