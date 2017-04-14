@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Text, Content } from 'native-base';
+import { Container, Content, Text, Spinner } from 'native-base';
 import { connect } from 'react-redux';
 import NavBar from '../../Components/NavBar';
 
@@ -19,13 +19,23 @@ class PlacesScreen extends Component {
       this.setState({
         isLoading: false,
       });
+    } else if (nextProps.places.error !== this.props.places.error) {
+      this.setState({
+        isLoading: false,
+      });
     }
   }
 
   componentDidMount() {
-    this.props.fetch({
-      type: 'nearby',
-    });
+    if (this.props.places.data) {
+      this.setState({
+        isLoading: false,
+      });
+    } else {
+      this.props.fetch({
+        type: 'nearby',
+      });
+    }
   }
 
   render() {
@@ -35,9 +45,10 @@ class PlacesScreen extends Component {
     return (
       <Container style={{ backgroundColor: '#2b323b' }}>
         <NavBar title="Places search" filter="category" />
-        <Content style={{ height: 500 }}>
-          <Text style={{ color: 'white' }}>{ isLoading ? 'loading..' : 'done.'}</Text>
-          <Text style={{ color: 'white' }}>{places.data}</Text>
+        <Content>
+          { isLoading ? <Spinner /> : (
+            <Text style={{ color: 'white' }}>{places.data}</Text>)
+          }
         </Content>
       </Container>
     );
