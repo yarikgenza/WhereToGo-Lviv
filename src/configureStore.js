@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import promise from 'redux-promise';
 
 import rootReducer from './Redux/Reducers';
 
@@ -13,7 +14,7 @@ export default function configureStore(initialState) {
     // const logger = createLogger()
 
     const finalCreateStore = compose(
-      applyMiddleware(thunkMiddleware),
+      applyMiddleware(thunkMiddleware, promise),
     )(createStore);
 
     const store = finalCreateStore(rootReducer, initialState);
