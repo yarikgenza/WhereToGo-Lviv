@@ -21,3 +21,14 @@ export const fetchNearby = (params) => {
       .catch(e => reject(e));
   });
 };
+
+export const fetchNextNearby = (params) => {
+  const { pagetoken } = params;
+  
+  return new Promise((resolve, reject) => {
+    fetch(`${baseUrl}nearbysearch/json?key=${apiKey}&pagetoken=${pagetoken}`)
+      .then(raw => raw.json())
+        .then(json => resolve(json))
+      .catch(e => reject(e));
+  });
+};

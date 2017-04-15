@@ -7,7 +7,10 @@ import { _getPhotoUrl } from '../../Api/places.api';
 class PlaceCard extends Component {
 
   loadImage(place) {
-    return _getPhotoUrl(place.photos[0].photo_reference);
+    if (place.photos) {
+      return _getPhotoUrl(place.photos[0].photo_reference);
+    }
+    return null;
   }
 
   render() {
