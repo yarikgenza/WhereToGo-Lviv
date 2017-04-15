@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ResponsiveImage from 'react-native-responsive-image';
 import { Dimensions } from 'react-native';
-import { Card, CardItem, Text } from 'native-base';
+import { Card, CardItem, Text, Button, Icon } from 'native-base';
 import { _getPhotoUrl } from '../../Api/places.api';
 
 class PlaceCard extends Component {
