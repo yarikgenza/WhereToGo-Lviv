@@ -208,7 +208,7 @@ export default (variables = variable) => {
     },
     padding: variables.listItemPadding + 5,
     paddingVertical: variables.listItemPadding,
-    backgroundColor: variables.cardDefaultBg,
+    backgroundColor: variables.defaultBackgroundColor,
   };
 
   return cardItemTheme;

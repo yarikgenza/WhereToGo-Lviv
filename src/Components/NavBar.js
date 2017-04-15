@@ -23,31 +23,29 @@ class NavBar extends Component {
     const { title, icon = 'menu', filter, search } = this.props;
 
     return (
-      <Container>
-        <Header>
-          <Left>
-            { icon === 'menu' ? (
-              <Button onPress={() => this.props.openDrawer()} transparent>
-                <Icon name="menu" />
-              </Button>
+      <Header>
+        <Left>
+          { icon === 'menu' ? (
+            <Button onPress={() => this.props.openDrawer()} transparent>
+              <Icon name="menu" />
+            </Button>
                ) : (
                  <Button onPress={() => Actions.pop()} transparent>
                    <Icon name="arrow-back" />
                  </Button>
                )}
-          </Left>
-          <Body>
-            <Title>{title}</Title>
-          </Body>
-          <Right>
-            { filter ? (
-              <Button onPress={() => this.showFilter(filter)} transparent>
-                <Icon name="ios-funnel" />
-              </Button>
+        </Left>
+        <Body>
+          <Title>{title}</Title>
+        </Body>
+        <Right>
+          { filter ? (
+            <Button onPress={() => this.showFilter(filter)} transparent>
+              <Icon name="ios-funnel" />
+            </Button>
                 ) : null }
-          </Right>
-        </Header>
-      </Container>
+        </Right>
+      </Header>
     );
   }
 }

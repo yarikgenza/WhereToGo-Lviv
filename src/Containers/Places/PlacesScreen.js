@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Container, Content, Text, Spinner } from 'native-base';
+import { Container, Content, Text, Spinner, View, List, Button } from 'native-base';
 import { connect } from 'react-redux';
 import NavBar from '../../Components/NavBar';
-
-import { fetchNearby } from '../../Redux/Actions/places';
+import PlaceCard from '../../Components/Places/PlaceCard';
+import { fetchNearby, fetchNextNearby } from '../../Redux/Actions/places';
+import styles from './PlacesScreenStyles';
 
 class PlacesScreen extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -15,7 +15,7 @@ class PlacesScreen extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.places.data !== this.props.places.data) {
+    if (nextProps.places.list !== this.props.places.list) {
       this.setState({
         isLoading: false,
       });
@@ -28,7 +28,6 @@ class PlacesScreen extends Component {
 
   fetchPlacesNearby() {
     const { latitude, longitude } = this.props.location;
-
     this.props.fetchNearby({
       lat: latitude,
       lon: longitude,
@@ -36,27 +35,47 @@ class PlacesScreen extends Component {
     });
   }
 
+  fetchNextResults() {
+    this.props.fetchNextNearby({
+      pagetoken: this.props.places.nextToken,
+    });
+  }
+
   componentDidMount() {
-    if (this.props.places.data) {
-      this.setState({
-        isLoading: false,
-      });
-    } else {
-      this.fetchPlacesNearby();
-    }
+    this.fetchPlacesNearby();
   }
 
   render() {
     const { isLoading } = this.state;
     const { places } = this.props;
 
+    const renderMoreButton = () => {
+      if (this.props.places.nextToken) {
+        return (
+          <Button onPress={() => this.fetchNextResults()}><Text>More!</Text></Button>
+        );
+      }
+      return null;
+    };
+
     return (
-      <Container style={{ backgroundColor: '#2b323b' }}>
+      <Container style={styles.container}>
         <NavBar title="Places search" filter="category" />
-        <Content>
-          { isLoading ? <Spinner /> : (
-            <Text style={{ color: 'white' }}>{JSON.stringify(places.data)} {places.error}</Text>)
-          }
+        <Text>{JSON.stringify(this.props.places.list.length)}</Text>
+        <Content padder>
+          { isLoading ? (
+            <View style={styles.spinner}>
+              <Spinner />
+            </View>
+         ) : (
+           <List
+             dataArray={this.props.places.list}
+             renderRow={(place, index) => (
+               <PlaceCard key={index} place={place} />
+             )}
+           />
+         )}
+          {renderMoreButton()}
         </Content>
       </Container>
     );
@@ -69,7 +88,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchNearby: config => dispatch(fetchNearby(config)),
+  fetchNearby: params => dispatch(fetchNearby(params)),
+  fetchNextNearby: params => dispatch(fetchNextNearby(params)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlacesScreen);

@@ -11,7 +11,8 @@ export const FETCH_FAILURE = 'places/FETCH_FAILURE';
  */
 
 const initialState = {
-  data: null,
+  nextToken: null,
+  list: [],
   category: [],
   error: null,
 };
@@ -27,7 +28,8 @@ export default function places(state = initialState, action) {
 
     case FETCH_SUCCESS: {
       return { ...state,
-        data: action.data,
+        nextToken: action.nextToken,
+        list: state.list.concat(action.list),
       };
     }
 
