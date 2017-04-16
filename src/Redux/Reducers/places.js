@@ -13,7 +13,7 @@ export const FETCH_FAILURE = 'places/FETCH_FAILURE';
 const initialState = {
   nextToken: null,
   list: [],
-  category: [],
+  category: null,
   error: null,
 };
 

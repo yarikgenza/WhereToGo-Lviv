@@ -24,7 +24,7 @@ export const fetchNearby = (params) => {
 
 export const fetchNextNearby = (params) => {
   const { pagetoken } = params;
-  
+
   return new Promise((resolve, reject) => {
     fetch(`${baseUrl}nearbysearch/json?key=${apiKey}&pagetoken=${pagetoken}`)
       .then(raw => raw.json())

@@ -1,19 +1,38 @@
 const categories = [
-  {
-    title: 'Food and Drink',
-    icon: 'ios-pizza',
-    code: 'food',
-  },
-  {
-    title: 'Places to visit',
-    icon: 'ios-flag',
-    code: 'places_to_visit',
-  },
-  {
-    title: 'Entertainment',
-    icon: 'md-wine',
-    code: 'entertainment',
-  },
+  [
+    {
+      title: 'Food and Drink',
+      icon: 'ios-pizza-outline',
+      code: 'food',
+    },
+    {
+      title: 'Entertainment',
+      icon: 'ios-wine-outline',
+      code: 'entertainment',
+    },
+    {
+      title: 'Shop center',
+      icon: 'ios-cart-outline',
+      code: 'shopping center',
+    },
+  ],
+  [
+    {
+      title: 'Park',
+      icon: 'ios-leaf-outline',
+      code: 'park',
+    },
+    {
+      title: 'Theater',
+      icon: 'ios-contacts-outline',
+      code: 'theater',
+    },
+    {
+      title: 'Museum',
+      icon: 'ios-eye-outline',
+      code: 'museum',
+    },
+  ],
 ];
 
 export default categories;
