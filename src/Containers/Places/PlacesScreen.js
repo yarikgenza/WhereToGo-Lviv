@@ -28,10 +28,11 @@ class PlacesScreen extends Component {
 
   fetchPlacesNearby() {
     const { latitude, longitude } = this.props.location;
+    const { category } = this.props.places;
     this.props.fetchNearby({
       lat: latitude,
       lon: longitude,
-      keyword: 'restaurant',
+      keyword: category,
     });
   }
 

@@ -1,38 +1,31 @@
-import { StyleSheet } from 'react-native';
-import { ApplicationStyles, Colors } from '../../Themes/Custom';
+import vars from '../../Themes/variables/platform';
 
-export default StyleSheet.create({
-  ...ApplicationStyles.screen,
-  centered: {
-    alignItems: 'center',
+export default {
+  container: {
+    backgroundColor: vars.defaultBackgroundColor,
   },
   headingContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.background,
+    backgroundColor: vars.defaultBackgroundColor,
     alignItems: 'center',
     padding: 25,
   },
-  heading: {
-    color: 'white',
-    fontSize: 44,
-    fontFamily: 'Roboto',
-  },
-  headingName: {
-    color: Colors.yellowText,
-    paddingTop: 50,
-    fontSize: 52,
-    fontFamily: 'Roboto',
-  },
-  nextButton: {
-    padding: 15,
-    backgroundColor: Colors.yellowText,
+  card: {
     alignItems: 'center',
     justifyContent: 'center',
+    borderColor: 'transparent',
+    backgroundColor: vars.defaultBackgroundColor,
   },
-  buttonText: {
-    color: Colors.background,
-    fontSize: 17,
+  cardIcon: {
+    alignSelf: 'center',
+    fontSize: 50,
+    color: vars.defaultOrangeTextColor,
+    padding: 5,
   },
-});
+  cardText: {
+    alignSelf: 'center',
+    color: 'white',
+  },
+};
