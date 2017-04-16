@@ -16,20 +16,23 @@ class PlaceCard extends Component {
   render() {
     const { place } = this.props;
 
-    return (
-      <Card>
-        <CardItem cardBody>
-          <ResponsiveImage
-            source={{ uri: this.loadImage(place) }}
-            initWidth={styles.img.width}
-            initHeight={styles.img.height}
-          />
-        </CardItem>
-        <CardItem content>
-          <Text>{place.name}</Text>
-        </CardItem>
-      </Card>
-    );
+    if (place.photos) {
+      return (
+        <Card>
+          <CardItem cardBody>
+            <ResponsiveImage
+              source={{ uri: this.loadImage(place) }}
+              initWidth={styles.img.width}
+              initHeight={styles.img.height}
+            />
+          </CardItem>
+          <CardItem content>
+            <Text>{place.name}</Text>
+          </CardItem>
+        </Card>
+      );
+    }
+    return null;
   }
 }
 
