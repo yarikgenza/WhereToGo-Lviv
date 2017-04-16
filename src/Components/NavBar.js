@@ -4,6 +4,7 @@ import { Container, Header, Left, Right, Body, Button, Title, Icon } from 'nativ
 import { Actions } from 'react-native-router-flux';
 import { openDrawer } from '../Redux/Actions/ui';
 
+import Filter from './Filter';
 import categories from '../Services/categoryService';
 
 class NavBar extends Component {
@@ -39,11 +40,7 @@ class NavBar extends Component {
           <Title>{title}</Title>
         </Body>
         <Right>
-          { filter ? (
-            <Button onPress={() => this.showFilter(filter)} transparent>
-              <Icon name="ios-funnel" />
-            </Button>
-                ) : null }
+          { filter ? <Filter /> : null }
         </Right>
       </Header>
     );
