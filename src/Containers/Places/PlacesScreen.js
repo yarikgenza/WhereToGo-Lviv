@@ -11,6 +11,7 @@ class PlacesScreen extends Component {
     super();
     this.state = {
       isLoading: true,
+      isNextLoading: false,
     };
   }
 
@@ -18,6 +19,7 @@ class PlacesScreen extends Component {
     if (nextProps.places.list !== this.props.places.list) {
       this.setState({
         isLoading: false,
+        isNextLoading: false,
       });
     } else if (nextProps.places.error !== this.props.places.error) {
       this.setState({
@@ -40,6 +42,9 @@ class PlacesScreen extends Component {
     this.props.fetchNextNearby({
       pagetoken: this.props.places.nextToken,
     });
+    this.setState({
+      isNextLoading: true,
+    });
   }
 
   componentDidMount() {
@@ -47,22 +52,20 @@ class PlacesScreen extends Component {
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, isNextLoading } = this.state;
     const { places } = this.props;
 
-    const renderMoreButton = () => {
-      if (this.props.places.nextToken) {
-        return (
-          <Button onPress={() => this.fetchNextResults()}><Text>More!</Text></Button>
-        );
-      }
-      return null;
-    };
+    const renderMoreButton = () => places.nextToken && !this.state.isLoading ? (
+      <View style={styles.moreButton}>
+        <Button full disabled={!!isNextLoading} onPress={() => this.fetchNextResults()}>
+          <Text>More!</Text>
+        </Button>
+      </View>) : null;
+
 
     return (
       <Container style={styles.container}>
         <NavBar title="Places search" filter="category" />
-        <Text>{JSON.stringify(this.props.places.list.length)}</Text>
         <Content padder>
           { isLoading ? (
             <View style={styles.spinner}>

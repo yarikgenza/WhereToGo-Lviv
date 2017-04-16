@@ -1,4 +1,4 @@
-import { SET_CATEGORY, FETCH_SUCCESS, FETCH_FAILURE } from '../Reducers/places';
+import { SET_CATEGORY, FETCH_SUCCESS, FETCH_FAILURE, FETCH_NEXT } from '../Reducers/places';
 import * as placesApi from '../../Api/places.api';
 /**
   * Set category
@@ -32,7 +32,7 @@ export const fetchNearby = config => dispatch => placesApi.fetchNearby(config)
 export const fetchNextNearby = config => dispatch => placesApi.fetchNextNearby(config)
     .then((data) => {
       dispatch({
-        type: FETCH_SUCCESS,
+        type: FETCH_NEXT,
         nextToken: data.next_page_token,
         list: data.results,
       });

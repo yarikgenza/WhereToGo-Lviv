@@ -10,4 +10,7 @@ export default {
   spinner: {
     paddingTop: (deviceHeight) / 2.7,
   },
+  moreButton: {
+    height: 60,
+  },
 };

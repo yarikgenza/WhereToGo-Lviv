@@ -1,3 +1,22 @@
+export const filterList = [
+  'Food and Drink',
+  'Entertainment',
+  'Shop center',
+  'Park',
+  'Theater',
+  'Museum',
+];
+
+
+export const codes = [
+  'food',
+  'entertainment',
+  'shopping center',
+  'park',
+  'theater',
+  'museum',
+];
+
 const categories = [
   [
     {
