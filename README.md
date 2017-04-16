@@ -42,7 +42,7 @@ Currently, WhereToGo under the development and is created as a pet-project.
 
 **Category screen**
 
-- [x] Ability to choose from 3 categories
+- [x] Ability to choose from 6 categories
 - [x] Animations
 
 **Main components**
@@ -64,11 +64,11 @@ Currently, WhereToGo under the development and is created as a pet-project.
 
 **Places**
 
-- [ ] Food and Drink
-- [ ] Places to visit
-- [ ] Entertainment
-- [ ] List view
-- [ ] Dynamical places loading
+- [x] Food and Drink
+- [x] Places to visit
+- [x] Entertainment
+- [x] List view
+- [x] Dynamical places loading
 - [ ] Show required time to get to the place
 
 **Events**

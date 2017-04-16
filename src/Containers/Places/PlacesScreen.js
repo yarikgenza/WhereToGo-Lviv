@@ -50,19 +50,17 @@ class PlacesScreen extends Component {
     const { isLoading } = this.state;
     const { places } = this.props;
 
-    const renderMoreButton = () => {
-      if (this.props.places.nextToken) {
-        return (
-          <Button onPress={() => this.fetchNextResults()}><Text>More!</Text></Button>
-        );
-      }
-      return null;
-    };
+    const renderMoreButton = () => places.nextToken ? (
+      <View style={styles.moreButton}>
+        <Button full onPress={() => this.fetchNextResults()}>
+          <Text>More!</Text>
+        </Button>
+      </View>) : null;
+
 
     return (
       <Container style={styles.container}>
         <NavBar title="Places search" filter="category" />
-        <Text>{JSON.stringify(this.props.places.list.length)}</Text>
         <Content padder>
           { isLoading ? (
             <View style={styles.spinner}>
