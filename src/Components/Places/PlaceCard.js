@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import ResponsiveImage from 'react-native-responsive-image';
-import { Dimensions } from 'react-native';
 import { Card, CardItem, Text, Button, Icon } from 'native-base';
 import { _getPhotoUrl } from '../../Api/places.api';
+import styles from './PlaceCardStyles';
 
 class PlaceCard extends Component {
 
   loadImage(place) {
-    if (place.photos) {
-      return _getPhotoUrl(place.photos[0].photo_reference);
-    }
-    return null;
+    return place.photos ? _getPhotoUrl(place.photos[0].photo_reference) : null;
+  }
+
+  renderStars(place) {
+    let arr = [];
+    if (place.rating) {
+      for (let i = 0; i < Math.round(place.rating); i++) {
+        arr.push(<Icon key={i} style={styles.starIcon} name="ios-star"/>)
+      }
+    } return arr;
   }
 
   render() {
@@ -27,7 +33,8 @@ class PlaceCard extends Component {
             />
           </CardItem>
           <CardItem content>
-            <Text>{place.name}</Text>
+            <Text style={{ color: 'white'}}>{place.name}</Text>
+            <Text style={{ color: 'white'}}>{this.renderStars(place)}</Text>
           </CardItem>
         </Card>
       );
@@ -36,10 +43,4 @@ class PlaceCard extends Component {
   }
 }
 
-const styles = {
-  img: {
-    width: Dimensions.get('window').width - 20,
-    height: Dimensions.get('window').height / 3.5,
-  },
-};
 export default PlaceCard;
