@@ -10,4 +10,29 @@ export default {
     color: vars.defaultOrangeTextColor,
     fontSize: vars.iconSizeMedium,
   },
+  name: {
+    paddingLeft: 10,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  icon: {
+    paddingTop: 5,
+    paddingLeft: 15,
+  },
+  distance: {
+    color: 'white',
+    paddingLeft: 10,
+    paddingBottom: 5,
+  },
+  time: {
+    color: 'white',
+    paddingLeft: 10,
+    paddingRight: 15,
+    paddingBottom: 5,
+  },
+  walkIcon: {
+    color: vars.defaultOrangeTextColor,
+    paddingLeft: 20,
+    paddingBottom: 5,
+  },
 };

@@ -8,7 +8,7 @@ export const getDistance = (from, to) => new Promise((res, rej) => {
   fetch(_getDistanceUrl(from, to))
     .then(raw => raw.json())
       .then((json) => {
-        res(json.rows[0].elements[0].duration.text);
+        res(json.rows[0].elements[0]);
       })
     .catch(e => rej(e));
 });
