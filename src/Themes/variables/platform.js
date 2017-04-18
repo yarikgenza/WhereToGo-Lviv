@@ -110,6 +110,9 @@ export default {
   get iconSizeSmall() {
     return this.iconFontSize * 0.6;
   },
+  get iconSizeMedium() {
+    return this.iconFontSize * 0.8;
+  },
 
 
     // Card

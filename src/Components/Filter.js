@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Icon, ActionSheet } from 'native-base';
-
 import { filterList, codes } from '../Services/categoryService';
 import { fetchNearby, fetchNextNearby } from '../Redux/Actions/places';
 
