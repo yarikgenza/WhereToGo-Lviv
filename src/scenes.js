@@ -10,8 +10,8 @@ import EventsScreen from './Containers/Events/EventsScreen';
 
 const Scenes = Actions.create(
   <Scene key="root" hideNavBar>
-    <Scene key="launchScreen" component={LaunchScreen} panHandlers={null} />
-    <Scene key="locationScreen" component={LocationScreen} initial panHandlers={null} />
+    <Scene key="launchScreen" component={LaunchScreen} initial panHandlers={null} />
+    <Scene key="locationScreen" component={LocationScreen} panHandlers={null} />
     <Scene key="categoryScreen" component={CategoryScreen} panHandlers={null} />
 
     <Scene key="placesScreen" component={PlacesScreen} panHandlers={null} />
