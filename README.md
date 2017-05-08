@@ -83,4 +83,11 @@ Currently, WhereToGo under the development and is created as a pet-project.
 - [ ] Auth using fb
 
 
+![Alt text](screenshots/01.jpg?raw=true "")
+![Alt text](screenshots/02.jpg?raw=true "")
+![Alt text](screenshots/03.jpg?raw=true "")
+![Alt text](screenshots/04.jpg?raw=true "")
+![Alt text](screenshots/05.jpg?raw=true "")
+![Alt text](screenshots/06.jpg?raw=true "")
+
 Project is under the MIT license.
